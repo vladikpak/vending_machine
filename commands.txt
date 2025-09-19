@@ -1,0 +1,1 @@
+Updated CardAcceptor, CoinAcceptor and AppRunner
