@@ -62,14 +62,18 @@ public class AppRunner {
         if ("a".equalsIgnoreCase(action)) {
             System.out.print("1 -> монетоприемник" + "\n"
             + "2 -> деньгоприемник " + "\n"
-            + "Выберите выбор 1 - 2: ");
-            if (fromConsole().equalsIgnoreCase("1")) {
+            + "Выберите выбор 1, 2: ");
+            String choice = fromConsole();
+            if (choice.equalsIgnoreCase("1")) {
                 coinAcceptor.setAmount(coinAcceptor.getAmount() + 10);
                 print("Вы пополнили баланс на 10");
                 return;
-            } else if (fromConsole().equalsIgnoreCase("2")) {
-                CardAcceptor cardAcceptor = new CardAcceptor();
+            } else if (choice.equalsIgnoreCase("2")) {
+                CardAcceptor cardAcceptor = new CardAcceptor(coinAcceptor);
                 cardAcceptor.RequireCard();
+                return;
+            } else {
+                print("Такой выбор нет");
             }
         }
         try {
@@ -84,7 +88,7 @@ public class AppRunner {
             if ("h".equalsIgnoreCase(action)) {
                 isExit = true;
             } else {
-                print("Недопустимая буква. Попрбуйте еще раз.");
+                print("Недопустимая буква. Попробуйте еще раз.");
                 chooseAction(products);
             }
         }
